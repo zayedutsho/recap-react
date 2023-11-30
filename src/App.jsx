@@ -7,8 +7,10 @@
 // import Pass from "./Comp/Conditional/Pass";
 // import User from "./Comp/User";
 
-import { useEffect, useReducer, useState } from "react";
-import useFetch from "./Comp/useFetch";
+import Counter from "./Comp/Counter";
+
+// import { useEffect, useReducer, useState } from "react";
+// import useFetch from "./Comp/useFetch";
 
 // export const Data = createContext();
 // export const Data2 = createContext();
@@ -140,11 +142,12 @@ function App() {
   //     .then((response) => response.json())
   //     .then((data) => setData(data));
   // }, []);
-  const data = useFetch("https://jsonplaceholder.typicode.com/todos");
+  // const data = useFetch("https://jsonplaceholder.typicode.com/todos");
 
   return (
     <>
-      {data && data.map((i) => <p key={i.id}>{i.title}</p>)}
+      <Counter></Counter>
+      {/* {data && data.map((i) => <p key={i.id}>{i.title}</p>)} */}
       {/* <Data.Provider value={name}>
         <Data2.Provider value={age}>
           <CompC />
