@@ -1,5 +1,6 @@
 import { list } from "postcss";
 import { useEffect, useState } from "react";
+import CompA from "./Comp/CompA";
 // import SimpleForm from "./Comp/SimpleForm";
 // import Pass from "./Comp/Conditional/Pass";
 // import User from "./Comp/User";
@@ -106,24 +107,27 @@ function App() {
   //   SetUserName("");
   //   console.log(SetUserName);
   // };
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    async function getData() {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/posts"
-      );
-      const data = await response.json();
-      if (data && data.length) setData(data);
-    }
+  // const [data, setData] = useState([]);
+  // useEffect(() => {
+  //   async function getData() {
+  //     const response = await fetch(
+  //       "https://jsonplaceholder.typicode.com/posts"
+  //     );
+  //     const data = await response.json();
+  //     if (data && data.length) setData(data);
+  //   }
 
-    getData();
-  }, []);
+  //   getData();
+  // }, []);
+
+  const name = "zayed";
 
   return (
     <>
-      {data.map((item) => (
+      <CompA name={name} />
+      {/* {data.map((item) => (
         <li key={Math.random}>{item.title}</li>
-      ))}
+      ))} */}
       {/* <h1>This is Form</h1>
 
       <form onSubmit={handleSubmit}>
