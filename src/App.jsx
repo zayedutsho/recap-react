@@ -1,9 +1,17 @@
-import { list } from "postcss";
-import { useEffect, useState } from "react";
-import CompA from "./Comp/CompA";
+// import { list } from "postcss";
+// import { useEffect, useState } from "react";
+// import { createContext } from "react";
+// import CompA from "./Comp/CompA";
+// import CompC from "./Comp/CompC";
 // import SimpleForm from "./Comp/SimpleForm";
 // import Pass from "./Comp/Conditional/Pass";
 // import User from "./Comp/User";
+
+import { useEffect, useReducer, useState } from "react";
+import useFetch from "./Comp/useFetch";
+
+// export const Data = createContext();
+// export const Data2 = createContext();
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -120,11 +128,29 @@ function App() {
   //   getData();
   // }, []);
 
-  const name = "zayed";
+  // const name = "zayed";
+  // const age = 26;
+
+  // const [state, dispatch] = useReducer(reducer, initialState);
+
+  // const [data, setData] = useState();
+
+  // useEffect(() => {
+  //   fetch("https://jsonplaceholder.typicode.com/todos")
+  //     .then((response) => response.json())
+  //     .then((data) => setData(data));
+  // }, []);
+  const data = useFetch("https://jsonplaceholder.typicode.com/todos");
 
   return (
     <>
-      <CompA name={name} />
+      {data && data.map((i) => <p key={i.id}>{i.title}</p>)}
+      {/* <Data.Provider value={name}>
+        <Data2.Provider value={age}>
+          <CompC />
+        </Data2.Provider>
+      </Data.Provider> */}
+      {/* <CompA name={name} /> */}
       {/* {data.map((item) => (
         <li key={Math.random}>{item.title}</li>
       ))} */}
@@ -195,8 +221,37 @@ function App() {
       <button onClick={updateName} className="border-2  px-10 py-2 rounded-md">
         update
       </button> */}
+
+      {/* <h1>{state.count}</h1>
+      <button onClick={() => dispatch({ type: "increment" })}>+</button>
+      <button onClick={() => dispatch({ type: "decrement" })}>-</button>
+      <button onClick={() => dispatch({ type: "reset" })}>Reset</button> */}
     </>
   );
 }
+
+// const initialState = { count: 0 };
+
+// const reducer = (state, action) => {
+//   switch (action.type) {
+//     case "increment":
+//       return {
+//         ...state,
+//         count: state.count + 1,
+//       };
+//     case "decrement":
+//       return {
+//         ...state,
+//         count: state.count - 1,
+//       };
+//     case "reset":
+//       return {
+//         ...state,
+//         count: 0,
+//       };
+//     default:
+//       return state;
+//   }
+// };
 
 export default App;
