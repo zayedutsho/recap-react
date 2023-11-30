@@ -1,5 +1,6 @@
-import { useState } from "react";
-import SimpleForm from "./Comp/SimpleForm";
+import { list } from "postcss";
+import { useEffect, useState } from "react";
+// import SimpleForm from "./Comp/SimpleForm";
 // import Pass from "./Comp/Conditional/Pass";
 // import User from "./Comp/User";
 
@@ -105,9 +106,24 @@ function App() {
   //   SetUserName("");
   //   console.log(SetUserName);
   // };
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    async function getData() {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/posts"
+      );
+      const data = await response.json();
+      if (data && data.length) setData(data);
+    }
+
+    getData();
+  }, []);
 
   return (
     <>
+      {data.map((item) => (
+        <li key={Math.random}>{item.title}</li>
+      ))}
       {/* <h1>This is Form</h1>
 
       <form onSubmit={handleSubmit}>
@@ -120,7 +136,7 @@ function App() {
 
         <button className="border-2  px-10 py-2 rounded-md ">Submit</button>
       </form> */}
-      <SimpleForm />
+      {/* <SimpleForm /> */}
 
       {/* {movies.map((m) => (
         <ul key={Math.random()}>
